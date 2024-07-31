@@ -1,12 +1,13 @@
 package com.nithiann.alarm.domain.repository
 
+import androidx.lifecycle.LiveData
 import com.nithiann.alarm.domain.model.Alarm
 import kotlinx.coroutines.flow.Flow
 
 interface AlarmRepository {
-    fun getAlarms(): Flow<List<Alarm>>
-    suspend fun getAlarmById(id: Long): Alarm?
-    suspend fun addAlarm(alarm: Alarm): Long
+    fun getAlarms(): LiveData<List<Alarm>>
+    suspend fun getAlarmById(id: Int): Alarm?
+    suspend fun addAlarm(alarm: Alarm): Int
     suspend fun updateAlarm(alarm: Alarm)
-    suspend fun deleteAlarm(id: Long)
+    suspend fun deleteAlarm(id: Int)
 }

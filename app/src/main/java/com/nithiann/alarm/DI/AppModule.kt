@@ -1,5 +1,9 @@
 package com.nithiann.alarm.DI
 
+import android.content.Context
+import androidx.room.Room
+import com.nithiann.alarm.data.AlarmDatabase
+import com.nithiann.alarm.data.DAO.AlarmDAO
 import com.nithiann.alarm.data.repository.AlarmRepositoryImpl
 import com.nithiann.alarm.domain.repository.AlarmRepository
 import com.nithiann.alarm.domain.usecase.AddAlarm
@@ -9,6 +13,7 @@ import com.nithiann.alarm.domain.usecase.UpdateAlarm
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -16,10 +21,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
     @Singleton
-    fun provideAlarmRepository(): AlarmRepository {
-        return AlarmRepositoryImpl()
+    @Provides
+    fun provideAlarmDatabase(@ApplicationContext context: Context): AlarmDatabase {
+        return Room.databaseBuilder(context, AlarmDatabase::class.java, "alarm_database").build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideAlarmDao(database: AlarmDatabase) = database.alarmDao()
+
+    @Singleton
+    @Provides
+    fun provideAlarmRepository(alarmDao: AlarmDAO): AlarmRepository {
+        return AlarmRepositoryImpl(alarmDao)
     }
 
     @Provides
