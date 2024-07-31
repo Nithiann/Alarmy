@@ -81,6 +81,13 @@ dependencies {
 
     implementation 'androidx.compose.material:material-icons-core:1.6.8'
     implementation 'androidx.compose.material:material-icons-extended:1.6.8'
+
+    // Room components
+    implementation "androidx.room:room-runtime:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.5.1"
 }
 
 kapt {
