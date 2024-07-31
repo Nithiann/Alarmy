@@ -1,7 +1,6 @@
 package com.nithiann.alarm.presentation.ui.components
 
 import android.annotation.SuppressLint
-import android.os.Build
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
