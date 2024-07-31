@@ -23,6 +23,18 @@ class AlarmViewModel @Inject constructor(
 
     val alarms: LiveData<List<Alarm>> = getAlarms().asLiveData()
 
+    fun toggleAlarm(alarm: Alarm, isEnabled: Boolean) {
+        viewModelScope.launch {
+            updateAlarm(alarm.copy(isEnabled = isEnabled))
+        }
+    }
+
+    // Navigations
+    fun editAlarm(alarm: Alarm) {
+        // Navigate to the edit alarm screen
+    }
+
+    // Functions
     fun addAlarm(alarm: Alarm) {
         viewModelScope.launch {
             addAlarm(alarm)

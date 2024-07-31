@@ -6,9 +6,14 @@ import com.nithiann.alarm.domain.usecase.AddAlarm
 import com.nithiann.alarm.domain.usecase.DeleteAlarm
 import com.nithiann.alarm.domain.usecase.GetAlarms
 import com.nithiann.alarm.domain.usecase.UpdateAlarm
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
