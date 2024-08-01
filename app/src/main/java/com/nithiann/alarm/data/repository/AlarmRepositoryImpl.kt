@@ -30,4 +30,11 @@ class AlarmRepositoryImpl @Inject constructor(private val alarmDao: AlarmDAO) : 
     override suspend fun deleteAlarm(id: Int) {
         return alarmDao.delete(id)
     }
+
+    override suspend fun deleteAlarmById(id: Int) {
+        val alarm = alarmDao.getById(id)
+        alarm?.let {
+            alarmDao.delete(it.id)
+        }
+    }
 }
