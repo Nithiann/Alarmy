@@ -38,7 +38,7 @@ class AlarmViewModel @Inject constructor(private val repository: AlarmRepository
     }
 
     fun delete(alarm: Alarm) = viewModelScope.launch {
-        repository.deleteAlarm(alarm.id)
+        repository.deleteAlarm(alarm)
     }
 
     fun deleteAlarmById(id: Int) = viewModelScope.launch {

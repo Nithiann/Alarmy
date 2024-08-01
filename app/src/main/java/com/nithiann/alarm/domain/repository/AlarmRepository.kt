@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 interface AlarmRepository {
     fun getAlarms(): LiveData<List<Alarm>>
     suspend fun getAlarmById(id: Int): Alarm?
-    suspend fun addAlarm(alarm: Alarm): Int
+    suspend fun addAlarm(alarm: Alarm): Long
     suspend fun updateAlarm(alarm: Alarm)
-    suspend fun deleteAlarm(id: Int)
+    suspend fun deleteAlarm(alarm: Alarm)
     suspend fun deleteAlarmById(id: Int)
 }

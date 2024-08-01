@@ -15,11 +15,11 @@ import javax.inject.Singleton
 class AlarmRepositoryImpl @Inject constructor(private val alarmDao: AlarmDAO) : AlarmRepository {
     override fun getAlarms(): LiveData<List<Alarm>> = alarmDao.getAllAlarms()
 
-    override suspend fun getAlarmById(id: Int): Alarm? {
+    override suspend fun getAlarmById(id: Int): Alarm {
         return alarmDao.getById(id)
     }
 
-    override suspend fun addAlarm(alarm: Alarm): Int {
+    override suspend fun addAlarm(alarm: Alarm): Long {
         return alarmDao.insert(alarm)
     }
 
@@ -27,14 +27,14 @@ class AlarmRepositoryImpl @Inject constructor(private val alarmDao: AlarmDAO) : 
         return alarmDao.update(alarm)
     }
 
-    override suspend fun deleteAlarm(id: Int) {
-        return alarmDao.delete(id)
+    override suspend fun deleteAlarm(alarm: Alarm) {
+        return alarmDao.delete(alarm)
     }
 
     override suspend fun deleteAlarmById(id: Int) {
         val alarm = alarmDao.getById(id)
         alarm?.let {
-            alarmDao.delete(it.id)
+            alarmDao.delete(alarm)
         }
     }
 }

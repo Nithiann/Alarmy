@@ -16,14 +16,14 @@ interface AlarmDAO {
     fun getAllAlarms(): LiveData<List<Alarm>>
 
     @Query("SELECT * FROM alarms WHERE id = :id")
-    fun getById(id: Int): Alarm?
+    fun getById(id: Int): Alarm
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(alarm: Alarm): Int
+    suspend fun insert(alarm: Alarm): Long
 
     @Update
     suspend fun update(alarm: Alarm)
 
     @Delete
-    suspend fun delete(id: Int)
+    suspend fun delete(vararg alarms: Alarm)
 }

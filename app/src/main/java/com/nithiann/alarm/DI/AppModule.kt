@@ -20,13 +20,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
+    // Database
     @Singleton
     @Provides
     fun provideAlarmDatabase(@ApplicationContext context: Context): AlarmDatabase {
         return Room.databaseBuilder(context, AlarmDatabase::class.java, "alarm_database").build()
     }
 
+    // Alarm model properties
     @Singleton
     @Provides
     fun provideAlarmDao(database: AlarmDatabase) = database.alarmDao()
