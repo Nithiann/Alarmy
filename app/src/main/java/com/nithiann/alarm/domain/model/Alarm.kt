@@ -13,5 +13,5 @@ data class Alarm(
     val label: String,
     val difficulty: Int,
     val sound: String,
-    val repeatDays: List<DayOfWeek>
+    val repeatDays: List<DayOfWeek>?
 )

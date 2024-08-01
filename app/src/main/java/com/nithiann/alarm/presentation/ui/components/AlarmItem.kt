@@ -38,7 +38,7 @@ fun AlarmItem(
                 style = MaterialTheme.typography.headlineLarge
             )
             Text(
-                text = alarm.repeatDays.joinToString(", "),
+                text = alarm.repeatDays!!.joinToString(", "),
                 color = Color.Gray,
                 style = MaterialTheme.typography.bodyMedium
             )
