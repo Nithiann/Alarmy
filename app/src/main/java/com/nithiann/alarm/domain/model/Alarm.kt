@@ -11,7 +11,7 @@ data class Alarm(
     val time: LocalTime,
     val isEnabled: Boolean,
     val label: String,
-    val difficulty: Int,
+    val difficulty: Difficulty,
     val sound: String,
     val repeatDays: List<DayOfWeek>?
 )
